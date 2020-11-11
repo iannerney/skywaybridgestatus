@@ -11,6 +11,6 @@
     "@sentry/node": "^4.5.0",
     "config": "^3.0.1",
     "mysql": "^2.16.0",
-    "puppeteer": "^1.11.0"
+    "puppeteer": "^1.13.0"
   }
 }
