@@ -169,7 +169,7 @@ require 'data/fetch-planned-closures.php';
             </div>
             <div class="project-information__contribute col-4">
                 <h2>Contribute</h2>
-                <p>If you’re interested in contributing to, or sponsoring this project, please visit our <a href="https://github.com/SkywayBridgeStatus">GitHub page</a>, or <a href="mailto:contribute@skywaybridgestatus.com">email us</a>.</p>
+                <p>If you’re interested in contributing to, or sponsoring this project, please visit our <a href="https://github.com/iannerney/skywaybridgestatus">GitHub page</a>, or <a href="mailto:contribute@skywaybridgestatus.com">email us</a>.</p>
             </div>
         </section>
 
