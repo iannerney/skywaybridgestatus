@@ -9,7 +9,7 @@
         "lint": "next lint",
         "prepare": "husky install",
         "predev": "ts-node --project ./tsconfig.json ./src/scripts/generateAntdCss.tsx",
-        "prebuild": "cross-env NODE_ENV=production ts-node --project ./tsconfig.json ./src/scripts/generateAntdCss.tsx"
+        "prebuild": "ts-node --project ./tsconfig.json ./src/scripts/generateAntdCss.tsx"
     },
     "dependencies": {
         "@ant-design/colors": "^7.0.0",
@@ -27,7 +27,6 @@
         "@types/react": "^18",
         "@types/react-dom": "^18",
         "autoprefixer": "^10.4.16",
-        "cross-env": "^7.0.3",
         "eslint": "^8",
         "eslint-config-next": "14.0.1",
         "eslint-config-prettier": "^9.0.0",
