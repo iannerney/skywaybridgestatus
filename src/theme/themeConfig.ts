@@ -1,5 +1,5 @@
 import { theme as defaultTheme } from "antd";
-import { branding } from "site.config";
+import { branding } from "../../site.config";
 import type { ThemeConfig } from "antd";
 
 const primaryColorVariants = [

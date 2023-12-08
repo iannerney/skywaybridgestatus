@@ -2,6 +2,7 @@ import StyledComponentsRegistry from "@/lib/AntdRegistry";
 import { branding } from "site.config";
 import type { Metadata } from "next";
 import "./globals.css";
+import "../../public/antd.min.css";
 
 // Initialize Firebase
 import { initializeApp } from "firebase/app";
