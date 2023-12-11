@@ -1,17 +1,17 @@
 "use client";
-import { PrimaryStatus } from "@/components/Blocks";
+import { PrimaryStatus, ProjectInformation, StatusDetails, SupportSection } from "@/components/Blocks";
 import { PageLayout } from "@/components/Layouts";
-import { ConfigProvider, Typography } from "antd";
-import theme from "@/theme/themeConfig";
+import { Typography } from "antd";
 const { Text } = Typography;
 
 const Home = () => {
     return (
-        <ConfigProvider theme={theme}>
-            <PageLayout>
-                <PrimaryStatus />
-            </PageLayout>
-        </ConfigProvider>
+        <PageLayout>
+            <PrimaryStatus />
+            <StatusDetails />
+            <SupportSection />
+            <ProjectInformation />
+        </PageLayout>
     );
 };
 

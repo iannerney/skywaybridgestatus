@@ -15,8 +15,12 @@ const Footer = () => {
                     SkywayBridgeStatus.com &copy; 2017-{date.getFullYear()}{" "}
                     <Link href="https://www.iannerney.com">Ian Nerney</Link>
                 </Text>
-                <Text>
-                    By using this web site you agree to the <Link href="/terms-of-use">terms of use</Link>.
+                <Text style={{ fontSize: "0.75rem" }}>
+                    By using this web site you agree to the{" "}
+                    <Link href="/terms-of-use" style={{ fontSize: "0.75rem" }}>
+                        terms of use
+                    </Link>
+                    .
                 </Text>
                 <Flex justify="center" style={{ padding: "0 8px" }}>
                     <Link href="https://www.facebook.com/SkywayStatus/">
