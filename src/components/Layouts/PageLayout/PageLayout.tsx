@@ -13,7 +13,7 @@ const PageLayout = ({ children }: IPageLayoutProps) => {
             <ConfigProvider theme={theme}>
                 <AntdLayout>
                     <Header />
-                    <Content style={{ minHeight: "80vh" }}>{children}</Content>
+                    <Content style={{ minHeight: "80vh", margin: "auto 24px" }}>{children}</Content>
                     <Footer />
                 </AntdLayout>
             </ConfigProvider>

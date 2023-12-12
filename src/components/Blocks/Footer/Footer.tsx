@@ -9,7 +9,7 @@ import { branding } from "site.config";
 const Footer = () => {
     const date = new Date();
     return (
-        <AntdFooter className="footer">
+        <AntdFooter className="footer" style={{ margin: "auto 48px" }}>
             <div className="copyright" style={{ display: "grid", placeItems: "center" }}>
                 <Text>
                     SkywayBridgeStatus.com &copy; 2017-{date.getFullYear()}{" "}

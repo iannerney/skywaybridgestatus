@@ -1,7 +1,22 @@
 import { Flex, Typography } from "antd";
 const { Title, Text, Link } = Typography;
 
-const PrimaryStatus = () => {
+interface IPrimaryStatusProps {
+    status: string;
+    color: string;
+    datetime: string;
+}
+
+const PrimaryStatus = ({ status, color, datetime }: IPrimaryStatusProps) => {
+    const fetchedDateTime = new Date(datetime);
+    const formattedDateTime = fetchedDateTime.toLocaleString("en-US", {
+        month: "long",
+        day: "numeric",
+        year: "numeric",
+        hour: "numeric",
+        minute: "numeric",
+        hour12: true,
+    });
     return (
         <section id="primary-status">
             <Flex
@@ -11,17 +26,19 @@ const PrimaryStatus = () => {
                 style={{ padding: "64px 0", textAlign: "center", lineHeight: "1.5" }}
             >
                 <Title level={1}>
-                    The Sunshine Skyway Bridge is currently <br /> <span style={{ color: "green" }}>OPEN</span>
+                    The Sunshine Skyway Bridge is currently <br />{" "}
+                    <span style={{ color: color, textTransform: "uppercase" }}>{status}</span>
                 </Title>
-                <Text>
-                    <Link href="https://www.skywaybridgestatus.com/&refresh=true">Refresh this page</Link> for the
-                    latest data.
-                </Text>
                 <Text>
                     We update our main status every 5 minutes from{" "}
                     <Link href="https://fl511.com/List/Alerts">FL511</Link>.
                 </Text>
-                <Text style={{ fontSize: "0.75rem" }}>(Status last updated: November 17th, 2023 at 3:50pm)</Text>
+
+                <Text>
+                    <Link href={`/?refresh=${Date.now()}`}>Refresh this page</Link> for the latest data.
+                </Text>
+
+                <Text style={{ fontSize: "0.75rem" }}>(Status last updated: {formattedDateTime})</Text>
             </Flex>
         </section>
     );
