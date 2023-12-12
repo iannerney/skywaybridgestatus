@@ -5,7 +5,7 @@ const ProjectInformation = () => {
     return (
         <section id="project-information">
             <Row gutter={[48, 48]}>
-                <Col xs={24} md={14}>
+                <Col xs={24} md={16}>
                     <Title level={2}>About</Title>
                     <p>
                         SkywayBridgeStatus.com is a project aimed at helping Tampa Bay commuters plan for unexpected
@@ -14,13 +14,14 @@ const ProjectInformation = () => {
                         closure prediction model available to the public.
                     </p>
                 </Col>
-                <Col xs={24} md={10}>
+                <Col xs={24} md={8}>
                     <Title level={2}>Sponsor This Project</Title>
                     <p>
                         If you’re interested in contributing to, or sponsoring this project, please visit our{" "}
-                        <a href="https://github.com/iannerney/skywaybridgestatus">GitHub page</a>, email us at{" "}
-                        <a href="mailto:contribute@skywaybridgestatus.com">contribute@skywaybridgestatus.com</a>, or
-                        make a donation on my Buy Me a Coffee page.
+                        <a href="https://github.com/iannerney/skywaybridgestatus">GitHub page</a>,{" "}
+                        <a href="mailto:contribute@skywaybridgestatus.com">email us</a>, or{" "}
+                        <a href="https://www.buymeacoffee.com/iannerney">make a donation</a> to help keep our web
+                        servers running.
                     </p>
                 </Col>
             </Row>

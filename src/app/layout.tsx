@@ -1,38 +1,36 @@
-import StyledComponentsRegistry from "@/lib/AntdRegistry";
 import { branding } from "site.config";
 import Script from "next/script";
 import type { Metadata } from "next";
 import "./globals.css";
 import "../../public/antd.min.css";
 
-// Initialize Firebase
-import { initializeApp } from "firebase/app";
-import { firebaseConfig } from "../../site.config";
-const app = initializeApp(firebaseConfig);
+// // Initialize Firebase
+// import { initializeApp } from "firebase/app";
+// import { firebaseConfig } from "../../site.config";
+// const app = initializeApp(firebaseConfig);
 
-// Monitor auth state
-import { getAuth, onAuthStateChanged } from "firebase/auth";
-import { PageLayout } from "@/components/Layouts";
+// // Monitor auth state
+// import { getAuth, onAuthStateChanged } from "firebase/auth";
+// import { PageLayout } from "@/components/Layouts";
 
-const auth = getAuth();
-onAuthStateChanged(auth, (user) => {
-    if (user) {
-        // User is signed in, see docs for a list of available properties
-        // https://firebase.google.com/docs/reference/js/auth.user
-        const uid = user.uid;
-        // ...
-    } else {
-        // User is signed out
-        // ...
-    }
-});
-
+// const auth = getAuth();
+// onAuthStateChanged(auth, (user) => {
+//     if (user) {
+//         // User is signed in, see docs for a list of available properties
+//         // https://firebase.google.com/docs/reference/js/auth.user
+//         const uid = user.uid;
+//         // ...
+//     } else {
+//         // User is signed out
+//         // ...
+//     }
+// });
 export const metadata: Metadata = {
     title: `${branding.siteName} - ${branding.siteTagline}`,
     description: branding.siteDescription,
 };
 
-const RootLayout = ({ children }: { children: React.ReactNode }) => {
+const RootLayout = async ({ children }: { children: React.ReactNode }) => {
     return (
         <html lang="en">
             <Script id="ga4-source" async src="https://www.googletagmanager.com/gtag/js?id=G-CH5BXLGBRE"></Script>
@@ -70,10 +68,9 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
                         src="https://www.facebook.com/tr?id=363765647455545&ev=PageView&noscript=1"
                     />
                 </noscript>
-                <StyledComponentsRegistry>{children}</StyledComponentsRegistry>
+                {children}
             </body>
         </html>
     );
 };
-
 export default RootLayout;
