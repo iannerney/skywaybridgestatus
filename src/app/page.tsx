@@ -9,6 +9,7 @@ export const metadata: Metadata = {
 };
 
 async function getData() {
+    // TODO: Update the URL after the subdomain is set up
     const res = await fetch(`https://www.skywaybridgestatus.com/v1/status/?key=${process.env.SBS_API_KEY}`, {
         next: { revalidate: 0 },
     });
@@ -30,7 +31,7 @@ const Home = async () => {
                 color={primary_status.color}
                 datetime={primary_status.datetime}
             />
-            <StatusDetails activeStatements={data.active_statements} plannedClosures={data.plannedClosures} />
+            <StatusDetails activeStatements={active_statements} plannedClosures={planned_closures} />
             <SupportSection />
             <ProjectInformation />
         </PageLayout>

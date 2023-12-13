@@ -13,10 +13,10 @@ const SupportSection = () => {
                 style={{ padding: "64px 0", textAlign: "center", lineHeight: "1.5" }}
             >
                 <Title level={2}>Was this helpful?</Title>
-                <p>
+                <Text>
                     If so, please consider supporting this site by sharing with a friend, or by supporting my caffeine
                     addiction. 😝
-                </p>
+                </Text>
                 <Flex gap="small" justify="center" align="center">
                     <div
                         data-href="https://www.skywaybridgestatus.com"
