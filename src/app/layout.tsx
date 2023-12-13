@@ -1,8 +1,8 @@
-import { branding } from "site.config";
-import Script from "next/script";
-import type { Metadata } from "next";
 import "./globals.css";
 import "../../public/antd.min.css";
+import Script from "next/script";
+import { branding } from "site.config";
+import type { Metadata } from "next";
 
 // Initialize Firebase
 import { initializeApp } from "firebase/app";
@@ -27,8 +27,7 @@ onAuthStateChanged(auth, (user) => {
 });
 
 export const metadata: Metadata = {
-    title: `${branding.siteName} - ${branding.siteTagline}`,
-    description: branding.siteDescription,
+    metadataBase: new URL(branding.canonicalUrlBase),
 };
 
 const RootLayout = async ({ children }: { children: React.ReactNode }) => {
@@ -41,16 +40,6 @@ const RootLayout = async ({ children }: { children: React.ReactNode }) => {
             gtag('js', new Date());
             gtag('config', 'G-CH5BXLGBRE');
             `}</Script>
-            <Script id="facebook-pixel">{`!function(f,b,e,v,n,t,s)
-            {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-            n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-            if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-            n.queue=[];t=b.createElement(e);t.async=!0;
-            t.src=v;s=b.getElementsByTagName(e)[0];
-            s.parentNode.insertBefore(t,s)}(window, document,'script',
-            'https://connect.facebook.net/en_US/fbevents.js');
-            fbq('init', '363765647455545');
-            fbq('track', 'PageView');`}</Script>
             <Script id="hotjar" strategy="afterInteractive">{`
             (function(h,o,t,j,a,r){
                 h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
@@ -60,17 +49,7 @@ const RootLayout = async ({ children }: { children: React.ReactNode }) => {
                 r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
                 a.appendChild(r);
             })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');`}</Script>
-            <body>
-                <noscript>
-                    <img
-                        height="1"
-                        width="1"
-                        style={{ display: "none" }}
-                        src="https://www.facebook.com/tr?id=363765647455545&ev=PageView&noscript=1"
-                    />
-                </noscript>
-                {children}
-            </body>
+            <body>{children}</body>
         </html>
     );
 };

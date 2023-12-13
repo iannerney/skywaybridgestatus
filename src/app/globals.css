@@ -3,6 +3,10 @@ body {
     line-height: 2;
 }
 
+*:focus {
+    border: 2px solid #006fa4;
+}
+
 section {
     margin: 0 auto;
     padding: 0 24px 24px 24px;

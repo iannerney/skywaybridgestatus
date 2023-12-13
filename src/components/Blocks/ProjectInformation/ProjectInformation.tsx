@@ -1,3 +1,4 @@
+"use client";
 import { Row, Col, Typography } from "antd";
 const { Title, Text, Link } = Typography;
 

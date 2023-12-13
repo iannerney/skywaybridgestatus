@@ -1,3 +1,4 @@
+"use client";
 import { Flex, Typography, Button } from "antd";
 const { Title, Text, Link } = Typography;
 import Image from "next/image";

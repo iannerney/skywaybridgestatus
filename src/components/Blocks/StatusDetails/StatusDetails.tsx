@@ -1,6 +1,7 @@
 "use client";
 import { Typography, Table } from "antd";
 const { Title } = Typography;
+import Link from "next/link";
 import type { ColumnsType } from "antd/es/table";
 
 interface IStatusDetailsProps {
@@ -21,6 +22,21 @@ const activeStatementsColumns: ColumnsType<IActiveStatements> = [
         title: "Source",
         dataIndex: "source",
         key: "source",
+        render: (text) => {
+            if (text === "FHP") {
+                return (
+                    <Link
+                        target="_blank"
+                        href={`https://www.flhsmv.gov/fhp/traffic/live_traffic_feed.html`}
+                        rel="nofollow"
+                    >
+                        {text}
+                    </Link>
+                );
+            } else {
+                return text;
+            }
+        },
     },
     {
         title: "Location",
@@ -63,7 +79,9 @@ const StatusDetails = ({ activeStatements, plannedClosures }: IStatusDetailsProp
                 backgroundColor: "rgba(255, 182, 0, 0.15)",
             }}
         >
-            <Title level={2}>Current Status</Title>
+            <Title level={2} hidden={true}>
+                Current Status
+            </Title>
             {activeStatements && activeStatements.length > 0 && (
                 <>
                     <Title level={3}>Active Statements</Title>
