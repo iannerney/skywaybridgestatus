@@ -1,3 +1,6 @@
+interface ISettingsConfigs {
+    googleTagManagerId: string;
+}
 interface IBrandingConfigs {
     siteName: string;
     siteTagline: string;
@@ -8,7 +11,9 @@ interface IBrandingConfigs {
     canonicalUrlBase: string;
 }
 
-const settings = {};
+const settings = {
+    googleTagManagerId: "GTM-M4B9S3QP",
+};
 
 const branding: IBrandingConfigs = {
     siteName: "Skyway Bridge Status",

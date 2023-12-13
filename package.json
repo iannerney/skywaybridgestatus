@@ -15,6 +15,7 @@
         "@ant-design/colors": "^7.0.0",
         "@ant-design/cssinjs": "^1.18.0-alpha.0",
         "@ant-design/icons": "^5.2.6",
+        "@next/third-parties": "^14.0.4",
         "antd": "^5.11.2",
         "firebase": "^10.5.2",
         "next": "14.0.1",
