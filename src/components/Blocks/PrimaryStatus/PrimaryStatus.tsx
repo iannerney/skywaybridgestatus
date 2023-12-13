@@ -44,7 +44,7 @@ const PrimaryStatus = ({ status, color, datetime }: IPrimaryStatusProps) => {
                             </Link>
                         </Text>
                     ) : (
-                        <Text>🎉 You&apos;re viewing the latest status.</Text>
+                        <Text>🎉 You are viewing the latest status.</Text>
                     )}
                 </Flex>
                 <Text>
