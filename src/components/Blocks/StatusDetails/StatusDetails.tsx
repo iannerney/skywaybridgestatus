@@ -1,5 +1,7 @@
+"use client";
 import { Typography, Table } from "antd";
-const { Title, Text, Link } = Typography;
+const { Title } = Typography;
+import type { ColumnsType } from "antd/es/table";
 
 interface IStatusDetailsProps {
     activeStatements: IActiveStatements[] | null;
@@ -7,13 +9,14 @@ interface IStatusDetailsProps {
 }
 
 interface IActiveStatements {
+    id: React.Key;
     source: string;
     location: string;
     message: string;
     last_fetched: string;
 }
 
-const activeStatementsColumns = [
+const activeStatementsColumns: ColumnsType<IActiveStatements> = [
     {
         title: "Source",
         dataIndex: "source",
@@ -23,6 +26,7 @@ const activeStatementsColumns = [
         title: "Location",
         dataIndex: "location",
         key: "location",
+        responsive: ["md"],
     },
     {
         title: "Message",
@@ -33,13 +37,23 @@ const activeStatementsColumns = [
         title: "Last Fetched",
         dataIndex: "last_fetched",
         key: "last_fetched",
+        responsive: ["md"],
     },
 ];
+
+const addKeyToObjectsInArray = (array: any[]) => {
+    return array.map((item, index) => {
+        return { ...item, key: index };
+    });
+};
 
 const StatusDetails = ({ activeStatements, plannedClosures }: IStatusDetailsProps) => {
     // activeStatements = [
     //     { source: "FHP", location: "PINELLAS", message: "NO ROADBLOCK", last_fetched: "2023-12-12 15:45:02" },
     // ];
+
+    const plannedClosuresWithKeys = plannedClosures ? addKeyToObjectsInArray(plannedClosures) : null;
+
     return (
         <section
             id="status-details"
@@ -53,7 +67,12 @@ const StatusDetails = ({ activeStatements, plannedClosures }: IStatusDetailsProp
             {activeStatements && activeStatements.length > 0 && (
                 <>
                     <Title level={3}>Active Statements</Title>
-                    <Table dataSource={activeStatements} columns={activeStatementsColumns} pagination={false} />
+                    <Table
+                        dataSource={activeStatements}
+                        columns={activeStatementsColumns}
+                        pagination={false}
+                        rowKey="id"
+                    />
                 </>
             )}
             {plannedClosures && plannedClosures.length > 0 ? <Title level={3}>Planned Closures</Title> : null}
