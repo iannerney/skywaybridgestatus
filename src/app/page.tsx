@@ -9,8 +9,7 @@ export const metadata: Metadata = {
 };
 
 async function getData() {
-    // TODO: Update the URL after the subdomain is set up
-    const res = await fetch(`https://www.skywaybridgestatus.com/v1/status/?key=${process.env.SBS_API_KEY}`, {
+    const res = await fetch(`https://api.skywaybridgestatus.com/v1/status/?key=${process.env.SBS_API_KEY}`, {
         next: { revalidate: 0 },
     });
 

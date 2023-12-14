@@ -22,6 +22,8 @@ const PrimaryStatus = ({ status, color, datetime }: IPrimaryStatusProps) => {
     });
     const [currentDateTime, setCurrentDateTime] = useState(new Date());
     setInterval(() => setCurrentDateTime(new Date()), 1000);
+    // Get epoch time from currentDateTime
+    const currentEpochTime = currentDateTime.getTime();
     const isDataStale = currentDateTime.getTime() - fetchedDateTime.getTime() > 300000;
     return (
         <section id="primary-status">
@@ -39,7 +41,13 @@ const PrimaryStatus = ({ status, color, datetime }: IPrimaryStatusProps) => {
                     {isDataStale ? (
                         <Text>
                             🆕 A new status is available.{" "}
-                            <Link href={`/?refresh=${Date.now()}`} rel="nofollow">
+                            <Link
+                                href={{
+                                    pathname: "/",
+                                    query: { refresh: currentDateTime.getTime() },
+                                }}
+                                rel="nofollow"
+                            >
                                 Refresh this page
                             </Link>
                         </Text>
