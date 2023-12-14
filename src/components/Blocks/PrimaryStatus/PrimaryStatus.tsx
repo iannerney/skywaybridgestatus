@@ -2,7 +2,7 @@
 import { Flex, Typography, Space, Alert, Spin, Button } from "antd";
 const { Title, Text } = Typography;
 import Link from "next/link";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 interface IPrimaryStatusProps {
     status: string;
@@ -21,8 +21,22 @@ const PrimaryStatus = ({ status, color, datetime }: IPrimaryStatusProps) => {
         hour12: true,
     });
     const [currentDateTime, setCurrentDateTime] = useState(new Date());
-    setInterval(() => setCurrentDateTime(new Date()), 1000);
-    const isDataStale = !currentDateTime ? false : currentDateTime.getTime() - fetchedDateTime.getTime() > 300000;
+    const [isDataStale, setIsDataStale] = useState(false);
+    // update currentDateTime and isDataStale every second
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setCurrentDateTime(new Date());
+            const timeDiff = Math.abs(currentDateTime.getTime() - fetchedDateTime.getTime());
+            const diffMinutes = Math.ceil(timeDiff / (1000 * 60));
+            if (diffMinutes > 5) {
+                setIsDataStale(true);
+            } else {
+                setIsDataStale(false);
+            }
+        }, 1000);
+        return () => clearInterval(interval);
+    }, [currentDateTime]);
+
     const [spinning, setSpinning] = useState(false);
     const handleRefresh = async () => {
         setSpinning(true);
@@ -42,9 +56,7 @@ const PrimaryStatus = ({ status, color, datetime }: IPrimaryStatusProps) => {
                     <span style={{ color: color, textTransform: "uppercase" }}>{status}</span>
                 </Title>
                 <Flex justify="center" gap="large" style={{ paddingTop: "48px" }}>
-                    {!isDataStale ? (
-                        <Text>🎉 You are viewing the latest status.</Text>
-                    ) : (
+                    {!!isDataStale ? (
                         <Text>
                             🆕 A new status is available.{" "}
                             <Link href="/" onClick={handleRefresh}>
@@ -52,6 +64,8 @@ const PrimaryStatus = ({ status, color, datetime }: IPrimaryStatusProps) => {
                             </Link>
                             .
                         </Text>
+                    ) : (
+                        <Text>🎉 You are viewing the latest status.</Text>
                     )}
                 </Flex>
                 <Text>
