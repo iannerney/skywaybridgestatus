@@ -22,7 +22,7 @@ const PrimaryStatus = ({ status, color, datetime }: IPrimaryStatusProps) => {
     });
     const [currentDateTime, setCurrentDateTime] = useState(new Date());
     setInterval(() => setCurrentDateTime(new Date()), 1000);
-    const isDataStale = currentDateTime.getTime() - fetchedDateTime.getTime() > 300000;
+    const isDataStale = currentDateTime ? currentDateTime.getTime() - fetchedDateTime.getTime() > 300000 : false;
     const [loading, setLoading] = useState(false);
     const router = useRouter();
     const handleRefresh = async () => {
