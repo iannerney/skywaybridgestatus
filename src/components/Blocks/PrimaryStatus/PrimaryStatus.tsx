@@ -1,6 +1,7 @@
 "use client";
 import { Flex, Typography, Space, Alert, Spin, Button } from "antd";
-const { Title, Text, Link } = Typography;
+const { Title, Text } = Typography;
+import Link from "next/link";
 import { useState } from "react";
 
 interface IPrimaryStatusProps {
@@ -21,14 +22,15 @@ const PrimaryStatus = ({ status, color, datetime }: IPrimaryStatusProps) => {
     });
     const [currentDateTime, setCurrentDateTime] = useState(new Date());
     setInterval(() => setCurrentDateTime(new Date()), 1000);
-    const isDataStale = currentDateTime ? currentDateTime.getTime() - fetchedDateTime.getTime() > 300000 : false;
-    const [loading, setLoading] = useState(false);
+    const isDataStale = !currentDateTime ? false : currentDateTime.getTime() - fetchedDateTime.getTime() > 300000;
+    const [spinning, setSpinning] = useState(false);
     const handleRefresh = async () => {
-        setLoading(true);
+        setSpinning(true);
         window.location.reload();
     };
     return (
         <section id="primary-status">
+            <Spin spinning={spinning} fullscreen />
             <Flex
                 vertical={true}
                 justify="center"
@@ -43,19 +45,13 @@ const PrimaryStatus = ({ status, color, datetime }: IPrimaryStatusProps) => {
                     {!isDataStale ? (
                         <Text>🎉 You are viewing the latest status.</Text>
                     ) : (
-                        <Spin spinning={loading}>
-                            <Alert
-                                type="info"
-                                description="A new status is available."
-                                action={
-                                    <Space>
-                                        <Button size="middle" type="primary" onClick={handleRefresh}>
-                                            Refresh
-                                        </Button>
-                                    </Space>
-                                }
-                            />
-                        </Spin>
+                        <Text>
+                            🆕 A new status is available.{" "}
+                            <Link href="/" onClick={handleRefresh}>
+                                Refresh the page
+                            </Link>
+                            .
+                        </Text>
                     )}
                 </Flex>
                 <Text>

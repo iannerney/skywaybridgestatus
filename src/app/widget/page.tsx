@@ -32,7 +32,7 @@ const WidgetPage = () => {
                 </Paragraph>
                 <pre>{`<div id="sbs-widget" style="max-width:600px; margin: 0 auto; text-align:center;"></div>`}</pre>
                 <Paragraph>That&apos;s it! You now have your status widget implemented on your website.</Paragraph>
-                <h2>Display Requirements</h2>
+                <Title level={2}>Display Requirements</Title>
                 <Paragraph>
                     To use the embeddable status widget, there are just a few requirements that must be adhered to:
                 </Paragraph>
@@ -49,7 +49,7 @@ const WidgetPage = () => {
                         </li>
                     </ol>
                 </Paragraph>
-                <h2>Questions or Help</h2>
+                <Title level={2}>Questions or Help</Title>
                 <Paragraph>
                     If you have any questions or issues, please contact me via email at{" "}
                     <a href="mailto:ian@skywaybridgestatus.com">ian@skywaybridgestatus.com</a> – I&apos;d be happy to
