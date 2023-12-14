@@ -10,7 +10,7 @@ const SupportSection = () => {
                 vertical={true}
                 justify="center"
                 gap="small"
-                style={{ padding: "64px 0", textAlign: "center", lineHeight: "1.5" }}
+                style={{ padding: "64px 24px", textAlign: "center", lineHeight: "1.5" }}
             >
                 <Title level={2}>Was this helpful?</Title>
                 <Text>

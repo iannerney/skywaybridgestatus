@@ -25,14 +25,16 @@ const Home = async () => {
     const { primary_status, active_statements, planned_closures } = data;
     return (
         <PageLayout>
-            <PrimaryStatus
-                status={primary_status.message}
-                color={primary_status.color}
-                datetime={primary_status.datetime}
-            />
-            <StatusDetails activeStatements={active_statements} plannedClosures={planned_closures} />
-            <SupportSection />
-            <ProjectInformation />
+            <div className="container">
+                <PrimaryStatus
+                    status={primary_status.message}
+                    color={primary_status.color}
+                    datetime={primary_status.datetime}
+                />
+                <StatusDetails activeStatements={active_statements} plannedClosures={planned_closures} />
+                <SupportSection />
+                <ProjectInformation />
+            </div>
         </PageLayout>
     );
 };

@@ -1,8 +1,8 @@
 "use client";
-import { Flex, Typography, Space, Alert } from "antd";
-const { Title, Text } = Typography;
-import Link from "next/link";
+import { Flex, Typography, Space, Alert, Spin, Button } from "antd";
+const { Title, Text, Link } = Typography;
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 
 interface IPrimaryStatusProps {
     status: string;
@@ -22,16 +22,22 @@ const PrimaryStatus = ({ status, color, datetime }: IPrimaryStatusProps) => {
     });
     const [currentDateTime, setCurrentDateTime] = useState(new Date());
     setInterval(() => setCurrentDateTime(new Date()), 1000);
-    // Get epoch time from currentDateTime
-    const currentEpochTime = currentDateTime.getTime();
     const isDataStale = currentDateTime.getTime() - fetchedDateTime.getTime() > 300000;
+    const [loading, setLoading] = useState(false);
+    const router = useRouter();
+    const handleRefresh = async () => {
+        setLoading(true);
+        router.push(`/?refresh=${new Date().getTime()}`);
+        router.refresh();
+        setLoading(false);
+    };
     return (
         <section id="primary-status">
             <Flex
                 vertical={true}
                 justify="center"
                 gap="small"
-                style={{ padding: "64px 0", textAlign: "center", lineHeight: "1.5" }}
+                style={{ padding: "64px 0px", textAlign: "center", lineHeight: "1.5" }}
             >
                 <Title level={1}>
                     The Sunshine Skyway Bridge is currently <br />{" "}
@@ -39,18 +45,19 @@ const PrimaryStatus = ({ status, color, datetime }: IPrimaryStatusProps) => {
                 </Title>
                 <Flex justify="center" gap="large" style={{ paddingTop: "48px" }}>
                     {isDataStale ? (
-                        <Text>
-                            🆕 A new status is available.{" "}
-                            <Link
-                                href={{
-                                    pathname: "/",
-                                    query: { refresh: currentDateTime.getTime() },
-                                }}
-                                rel="nofollow"
-                            >
-                                Refresh this page
-                            </Link>
-                        </Text>
+                        <Spin spinning={loading}>
+                            <Alert
+                                type="info"
+                                description="A new status is available."
+                                action={
+                                    <Space>
+                                        <Button size="middle" type="primary" onClick={handleRefresh}>
+                                            Refresh
+                                        </Button>
+                                    </Space>
+                                }
+                            />
+                        </Spin>
                     ) : (
                         <Text>🎉 You are viewing the latest status.</Text>
                     )}

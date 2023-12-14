@@ -1,21 +1,17 @@
-"use client";
 import Image from "next/image";
 import Link from "next/link";
-import { Header as AntdHeader } from "antd/es/layout/layout";
 import { branding } from "site.config";
+import { Container } from "@/components/Blocks";
 
 const Header = () => {
     return (
-        <AntdHeader
-            className="header"
-            style={{ backgroundColor: "white", height: "100px", display: "grid", placeItems: "center" }}
-        >
-            <div className="logo">
+        <header style={{ backgroundColor: "white", height: "100px", display: "grid", placeItems: "center" }}>
+            <Container>
                 <Link href="/">
                     <Image src={branding.logo} alt={branding.siteName} width={308} height={100} priority />
                 </Link>
-            </div>
-        </AntdHeader>
+            </Container>
+        </header>
     );
 };
 

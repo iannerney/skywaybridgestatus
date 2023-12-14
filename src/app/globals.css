@@ -1,9 +1,10 @@
 body {
     margin: 0 auto;
+    background: #f5f5f5;
 }
 
-section {
-    margin: 0 auto;
-    padding: 0 24px 24px 24px;
-    max-width: 1140px;
+pre {
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    text-align: left;
 }

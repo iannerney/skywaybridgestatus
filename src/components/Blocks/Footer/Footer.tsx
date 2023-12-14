@@ -1,29 +1,29 @@
 "use client";
 import { Typography } from "antd";
-const { Text } = Typography;
+const { Paragraph } = Typography;
 import Link from "next/link";
-import { Footer as AntdFooter } from "antd/es/layout/layout";
+import { Container } from "@/components/Blocks";
 
 const Footer = () => {
     const date = new Date();
     return (
-        <AntdFooter className="footer" style={{ margin: "48px" }}>
-            <div className="copyright" style={{ display: "grid", placeItems: "center" }}>
-                <Text>
+        <footer className="footer">
+            <Container style={{ textAlign: "center", margin: "48px auto" }}>
+                <Paragraph>
                     SkywayBridgeStatus.com &copy; 2017-{date.getFullYear()}{" "}
                     <Link href="https://www.iannerney.com" target="_blank">
                         Ian Nerney
                     </Link>
-                </Text>
-                <Text style={{ fontSize: "0.75rem", padding: "8px 0" }}>
+                </Paragraph>
+                <Paragraph style={{ fontSize: "0.75rem" }}>
                     By using this web site you agree to the{" "}
                     <Link href="/terms-of-use" style={{ fontSize: "0.75rem" }}>
                         terms of use
                     </Link>
                     .
-                </Text>
-            </div>
-        </AntdFooter>
+                </Paragraph>
+            </Container>
+        </footer>
     );
 };
 
