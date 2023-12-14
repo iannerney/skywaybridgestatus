@@ -2,7 +2,6 @@
 import { Flex, Typography, Space, Alert, Spin, Button } from "antd";
 const { Title, Text, Link } = Typography;
 import { useState } from "react";
-import { useRouter } from "next/navigation";
 
 interface IPrimaryStatusProps {
     status: string;
@@ -24,12 +23,9 @@ const PrimaryStatus = ({ status, color, datetime }: IPrimaryStatusProps) => {
     setInterval(() => setCurrentDateTime(new Date()), 1000);
     const isDataStale = currentDateTime ? currentDateTime.getTime() - fetchedDateTime.getTime() > 300000 : false;
     const [loading, setLoading] = useState(false);
-    const router = useRouter();
     const handleRefresh = async () => {
         setLoading(true);
-        router.push(`/?refresh=${new Date().getTime()}`);
-        router.refresh();
-        setLoading(false);
+        window.location.reload();
     };
     return (
         <section id="primary-status">
