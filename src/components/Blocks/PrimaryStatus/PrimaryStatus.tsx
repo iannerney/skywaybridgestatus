@@ -44,7 +44,9 @@ const PrimaryStatus = ({ status, color, datetime }: IPrimaryStatusProps) => {
                     <span style={{ color: color, textTransform: "uppercase" }}>{status}</span>
                 </Title>
                 <Flex justify="center" gap="large" style={{ paddingTop: "48px" }}>
-                    {isDataStale ? (
+                    {!isDataStale ? (
+                        <Text>🎉 You are viewing the latest status.</Text>
+                    ) : (
                         <Spin spinning={loading}>
                             <Alert
                                 type="info"
@@ -58,8 +60,6 @@ const PrimaryStatus = ({ status, color, datetime }: IPrimaryStatusProps) => {
                                 }
                             />
                         </Spin>
-                    ) : (
-                        <Text>🎉 You are viewing the latest status.</Text>
                     )}
                 </Flex>
                 <Text>
