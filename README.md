@@ -1,5 +1,7 @@
 # Skyway Bridge Status
 
+![Skyway Bridge Status](https://www.skywaybridgestatus.com/opengraph-image.jpg)
+
 ## Summary
 
 This project is aimed at helping Tampa Bay commuters plan for unexpected closures of the Sunshine Skyway Bridge. This web application collects real-time weather and traffic data from reputable sources, and displays that data on a front-facing website (SkywayBridgeStatus.com).
