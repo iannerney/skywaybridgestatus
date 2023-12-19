@@ -26,14 +26,4 @@ const branding: IBrandingConfigs = {
     canonicalUrlBase: "https://www.skywaybridgestatus.com",
 };
 
-const firebaseConfig = {
-    apiKey: process.env.FB_AK,
-    authDomain: process.env.FB_AD,
-    databaseURL: process.env.FB_DBURL,
-    projectId: process.env.FB_PID,
-    storageBucket: process.env.FB_SB,
-    messagingSenderId: process.env.FB_MSID,
-    appId: process.env.FB_AID,
-};
-
-export { settings, branding, firebaseConfig };
+export { settings, branding };
