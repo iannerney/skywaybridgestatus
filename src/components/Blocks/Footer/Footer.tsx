@@ -9,7 +9,7 @@ const Footer = () => {
     return (
         <footer className="footer">
             <Container style={{ textAlign: "center", margin: "48px auto" }}>
-                <Paragraph>
+                <Paragraph style={{ lineHeight: "1.5" }}>
                     SkywayBridgeStatus.com &copy; 2017-{date.getFullYear()}{" "}
                     <Link href="https://www.iannerney.com" target="_blank">
                         Ian Nerney

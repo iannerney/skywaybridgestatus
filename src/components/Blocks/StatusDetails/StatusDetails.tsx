@@ -3,6 +3,7 @@ import { Typography, Table } from "antd";
 import { Container } from "@/components/Blocks";
 const { Title } = Typography;
 import Link from "next/link";
+import { useStatus } from "@/hooks";
 import type { ColumnsType } from "antd/es/table";
 
 // TODO: Refactor to use helper and types files
@@ -65,7 +66,8 @@ const addKeyToObjectsInArray = (array: any[]) => {
     });
 };
 
-const StatusDetails = ({ activeStatements, plannedClosures }: IStatusDetailsProps) => {
+const StatusDetails = () => {
+    const { status, isLoading, isValidating, error } = useStatus();
     return (
         <section
             id="status-details"
@@ -76,20 +78,21 @@ const StatusDetails = ({ activeStatements, plannedClosures }: IStatusDetailsProp
             }}
         >
             <Container>
-                {activeStatements && activeStatements.length > 0 && (
+                {!isLoading && !isValidating && status && status.active_statements.length > 0 && (
                     <>
                         <Title level={2}>Active Statements</Title>
                         <Table
-                            dataSource={activeStatements}
+                            dataSource={status.active_statements}
                             columns={activeStatementsColumns}
                             pagination={false}
                             rowKey="id"
                         />
                     </>
                 )}
-                {/* 
-            TODO: Implement planned closures feature
-            {plannedClosures && plannedClosures.length > 0 ? <Title level={2}>Planned Closures</Title> : null} */}
+                {/* TODO: Implement planned closures feature
+                {!isLoading && status && status.planned_closures && status.planned_closures.length > 0 && (
+                    <>...</>
+                )} */}
                 <Title level={2}>Weather</Title>
                 <iframe
                     title="Windy.com Weather Map"
