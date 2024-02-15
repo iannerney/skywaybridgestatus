@@ -26,8 +26,10 @@ const Home = async () => {
     return (
         <PageLayout>
             <PrimaryStatus
-                status={primary_status.message}
-                color={primary_status.color}
+                // status={primary_status.message}
+                // color={primary_status.color}
+                status="open"
+                color="green"
                 datetime={primary_status.datetime}
             />
             <StatusDetails activeStatements={active_statements} plannedClosures={planned_closures} />
