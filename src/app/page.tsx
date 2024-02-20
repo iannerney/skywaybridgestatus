@@ -1,6 +1,7 @@
 import { PageLayout } from "@/components/Layouts";
 import { PrimaryStatus, ProjectInformation, StatusDetails, SupportSection } from "@/components/Blocks";
 import { branding } from "site.config";
+import { Alert } from "antd";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -23,19 +24,21 @@ async function getData() {
 const Home = async () => {
     const data = await getData();
     const { primary_status, active_statements, planned_closures } = data;
+    const alertBanner = null; // TODO: Add this to the CMS or API
     return (
-        <PageLayout>
-            <PrimaryStatus
-                // status={primary_status.message}
-                // color={primary_status.color}
-                status="open"
-                color="green"
-                datetime={primary_status.datetime}
-            />
-            <StatusDetails activeStatements={active_statements} plannedClosures={planned_closures} />
-            <SupportSection />
-            <ProjectInformation />
-        </PageLayout>
+        <>
+            {alertBanner && <Alert message={alertBanner} banner />}
+            <PageLayout>
+                <PrimaryStatus
+                    status={primary_status.message}
+                    color={primary_status.color}
+                    datetime={primary_status.datetime}
+                />
+                <StatusDetails activeStatements={active_statements} plannedClosures={planned_closures} />
+                <SupportSection />
+                <ProjectInformation />
+            </PageLayout>
+        </>
     );
 };
 export default Home;
