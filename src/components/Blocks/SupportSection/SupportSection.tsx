@@ -6,12 +6,7 @@ import Image from "next/image";
 const SupportSection = () => {
     return (
         <section id="support">
-            <Flex
-                vertical={true}
-                justify="center"
-                gap="small"
-                style={{ padding: "64px 24px", textAlign: "center", lineHeight: "1.5" }}
-            >
+            <Flex vertical={true} justify="center" gap="small" style={{ textAlign: "center", lineHeight: "1.5" }}>
                 <Title level={2}>Was this helpful?</Title>
                 <Text>
                     If so, please consider supporting this site by sharing with a friend, or by supporting my caffeine

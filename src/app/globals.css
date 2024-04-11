@@ -8,3 +8,17 @@ pre {
     word-wrap: break-word;
     text-align: left;
 }
+
+@media screen and (max-width: 786px) {
+    section {
+        margin: 64px 0px;
+        padding-bottom: 24px;
+    }
+}
+
+@media screen and (min-width: 787px) {
+    section {
+        margin: 96px 0px;
+        padding-bottom: 24px;
+    }
+}

@@ -8,7 +8,7 @@ const Footer = () => {
     const date = new Date();
     return (
         <footer className="footer">
-            <Container style={{ textAlign: "center", margin: "48px auto" }}>
+            <Container style={{ textAlign: "center" }}>
                 <Paragraph>
                     SkywayBridgeStatus.com &copy; 2017-{date.getFullYear()}{" "}
                     <Link href="https://www.iannerney.com" target="_blank">

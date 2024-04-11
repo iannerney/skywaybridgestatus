@@ -45,12 +45,7 @@ const PrimaryStatus = ({ status, color, datetime }: IPrimaryStatusProps) => {
     return (
         <section id="primary-status">
             <Spin spinning={spinning} fullscreen />
-            <Flex
-                vertical={true}
-                justify="center"
-                gap="small"
-                style={{ padding: "64px 0px", textAlign: "center", lineHeight: "1.5" }}
-            >
+            <Flex vertical={true} justify="center" gap="small" style={{ textAlign: "center", lineHeight: "1.5" }}>
                 <Title level={1}>
                     The Sunshine Skyway Bridge is currently <br />{" "}
                     <span style={{ color: color, textTransform: "uppercase" }}>{status}</span>

@@ -1,5 +1,13 @@
 import { PageLayout } from "@/components/Layouts";
-import { PrimaryStatus, ProjectInformation, StatusDetails, SupportSection } from "@/components/Blocks";
+import {
+    PrimaryStatus,
+    ProjectInformation,
+    StatusDetails,
+    SupportSection,
+    DisplayAd,
+    Weather,
+    TrafficCameras,
+} from "@/components/Blocks";
 import { branding } from "site.config";
 import { Alert } from "antd";
 import type { Metadata } from "next";
@@ -35,6 +43,24 @@ const Home = async () => {
                     datetime={primary_status.datetime}
                 />
                 <StatusDetails activeStatements={active_statements} plannedClosures={planned_closures} />
+                <DisplayAd
+                    desktopImage="/ads/placeholder-1088x300.png"
+                    tabletImage="/ads/placeholder-768x400.png"
+                    mobileImage="/ads/placeholder-580x400.png"
+                    adUrl="mailto:ian@skywaybridgestatus.com"
+                    adAltText="To advertise here contact ian@skywaybridgestatus.com"
+                    adId="ad1-placement1"
+                />
+                <Weather />
+                <DisplayAd
+                    desktopImage="/ads/placeholder-1088x300.png"
+                    tabletImage="/ads/placeholder-768x400.png"
+                    mobileImage="/ads/placeholder-580x400.png"
+                    adUrl="mailto:ian@skywaybridgestatus.com"
+                    adAltText="To advertise here contact ian@skywaybridgestatus.com"
+                    adId="ad1-placement2"
+                />
+                <TrafficCameras />
                 <SupportSection />
                 <ProjectInformation />
             </PageLayout>
