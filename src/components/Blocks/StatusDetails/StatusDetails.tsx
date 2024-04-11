@@ -94,9 +94,9 @@ const StatusDetails = ({ activeStatements, plannedClosures }: IStatusDetailsProp
                 <iframe
                     title="Windy.com Weather Map"
                     width="100%"
-                    height="400"
-                    src="https://embed.windy.com/embed2.html?lat=27.613&lon=-82.652&detailLat=26.554&detailLon=-81.902&width=1036&height=400&zoom=10&level=surface&overlay=wind&product=ecmwf&menu=&message=true&marker=true&calendar=&pressure=&type=map&location=coordinates&detail=&metricWind=mph&metricTemp=%C2%B0F&radarRange=-1"
-                ></iframe>
+                    height="500"
+                    src="https://embed.windy.com/embed.html?type=map&location=coordinates&metricRain=in&metricTemp=°F&metricWind=mph&zoom=10&overlay=wind&product=ecmwf&level=surface&lat=27.506&lon=-82.653&detailLat=27.615&detailLon=-82.654&detail=true" >
+                </iframe>
                 <TrafficCameras />
             </Container>
         </section>
