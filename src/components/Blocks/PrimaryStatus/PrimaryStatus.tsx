@@ -3,14 +3,15 @@ import { Flex, Typography, Space, Alert, Spin, Button } from "antd";
 const { Title, Text } = Typography;
 import Link from "next/link";
 import { useState, useEffect } from "react";
+import type { IPrimaryStatus } from "@/types/StatusTypes";
 
 interface IPrimaryStatusProps {
-    status: string;
-    color: string;
-    datetime: string;
+    primaryStatus: IPrimaryStatus;
+    primaryStatusOverride: IPrimaryStatus | null | undefined;
 }
 
-const PrimaryStatus = ({ status, color, datetime }: IPrimaryStatusProps) => {
+const PrimaryStatus = (props: IPrimaryStatusProps) => {
+    const { message, color, datetime } = props.primaryStatusOverride || props.primaryStatus;
     const fetchedDateTime = new Date(datetime);
     const formattedDateTime = fetchedDateTime.toLocaleString("en-US", {
         month: "long",
@@ -22,6 +23,7 @@ const PrimaryStatus = ({ status, color, datetime }: IPrimaryStatusProps) => {
     });
     const [currentDateTime, setCurrentDateTime] = useState(new Date());
     const [isDataStale, setIsDataStale] = useState(false);
+    
     // update currentDateTime and isDataStale every second
     useEffect(() => {
         const interval = setInterval(() => {
@@ -48,7 +50,7 @@ const PrimaryStatus = ({ status, color, datetime }: IPrimaryStatusProps) => {
             <Flex vertical={true} justify="center" gap="small" style={{ textAlign: "center", lineHeight: "1.5" }}>
                 <Title level={1}>
                     The Sunshine Skyway Bridge is currently <br />{" "}
-                    <span style={{ color: "red", textTransform: "uppercase" }}>Closed</span>
+                    <span style={{ color: color, textTransform: "uppercase" }}>{message}</span>
                 </Title>
                 <Flex justify="center" gap="large" style={{ paddingTop: "48px" }}>
                     {!!isDataStale ? (
@@ -67,8 +69,10 @@ const PrimaryStatus = ({ status, color, datetime }: IPrimaryStatusProps) => {
                     We update our main status every 5 minutes from{" "}
                     <Link target="_blank" href="https://fl511.com/List/Alerts" rel="nofollow">
                         FL511
+                    </Link> and{" "} 
+                    <Link target="_blank" href="https://www.flhsmv.gov/fhp/traffic/live_traffic_feed.html" rel="nofollow">
+                        FHP
                     </Link>
-                    .
                 </Text>
 
                 <Text style={{ fontSize: "0.75rem" }}>(Status last updated: {formattedDateTime})</Text>

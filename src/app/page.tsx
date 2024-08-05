@@ -11,6 +11,7 @@ import {
 import { branding } from "site.config";
 import { Alert } from "antd";
 import type { Metadata } from "next";
+import type { IStatusSummary } from "@/types/StatusTypes";
 
 export const metadata: Metadata = {
     title: `${branding.siteName} - ${branding.siteTagline}`,
@@ -29,18 +30,32 @@ async function getData() {
     return res.json();
 }
 
+const verifyPrimaryStatus = async (data: IStatusSummary) => {
+    // If the primary status is not "closed" then we need to check the active statements for a closure
+    // Reference https://github.com/iannerney/skywaybridgestatus-v2/issues/1
+    if (data.primary_status.message !== "closed") {
+        const activeClosures = data.active_statements.filter((statement) => statement.message.toLowerCase().includes("closed"));
+        if (activeClosures.length > 0) {
+            const primaryStatusOverride = {message: "closed", modifier:"closed", color:"red", datetime:activeClosures[0].last_fetched};
+            return primaryStatusOverride;
+        } else {
+            return null;
+        }
+    }
+}
+
 const Home = async () => {
     const data = await getData();
+    const primaryStatusOverride = await verifyPrimaryStatus(data)
     const { primary_status, active_statements, planned_closures } = data;
-    const alertBanner = "This site has been been showing an incorrect primary status. Please reference the FHP status in the status table below. Working on a fix now..."; // TODO: Add this to the CMS or API
+    const alertBanner = null; // TODO: Add this to the CMS or API
     return (
         <>
             {alertBanner && <Alert message={alertBanner} banner />}
             <PageLayout>
                 <PrimaryStatus
-                    status={primary_status.message}
-                    color={primary_status.color}
-                    datetime={primary_status.datetime}
+                    primaryStatus={primary_status}
+                    primaryStatusOverride={primaryStatusOverride}
                 />
                 <StatusDetails activeStatements={active_statements} plannedClosures={planned_closures} />
                 <DisplayAd
