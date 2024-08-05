@@ -32,7 +32,7 @@ async function getData() {
 
 const verifyPrimaryStatus = async (data: IStatusSummary) => {
     // If the primary status is not "closed" then we need to check the active statements for a closure
-    // Reference https://github.com/iannerney/skywaybridgestatus-v2/issues/1
+    // Reference https://github.com/iannerney/skywaybridgestatus/issues/1
     if (data.primary_status.message !== "closed") {
         const activeClosures = data.active_statements.filter((statement) => statement.message.toLowerCase().includes("closed"));
         if (activeClosures.length > 0) {
