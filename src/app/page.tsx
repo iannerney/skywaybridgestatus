@@ -48,7 +48,7 @@ const Home = async () => {
     const data = await getData();
     const primaryStatusOverride = await verifyPrimaryStatus(data)
     const { primary_status, active_statements, planned_closures } = data;
-    const alertBanner = null; // TODO: Add this to the CMS or API
+    const alertBanner = "The issue with the site status should be resolved. Please cross reference the main status against the Active Statements from FHP below."; // TODO: Add this to the CMS or API
     return (
         <>
             {alertBanner && <Alert message={alertBanner} banner />}
