@@ -32,7 +32,7 @@ async function getData() {
 const Home = async () => {
     const data = await getData();
     const { primary_status, active_statements, planned_closures } = data;
-    const alertBanner = null; // TODO: Add this to the CMS or API
+    const alertBanner = "This site has been been showing an incorrect primary status. Please reference the FHP status in the status table below. Working on a fix now..."; // TODO: Add this to the CMS or API
     return (
         <>
             {alertBanner && <Alert message={alertBanner} banner />}

@@ -48,7 +48,7 @@ const PrimaryStatus = ({ status, color, datetime }: IPrimaryStatusProps) => {
             <Flex vertical={true} justify="center" gap="small" style={{ textAlign: "center", lineHeight: "1.5" }}>
                 <Title level={1}>
                     The Sunshine Skyway Bridge is currently <br />{" "}
-                    <span style={{ color: color, textTransform: "uppercase" }}>{status}</span>
+                    <span style={{ color: "red", textTransform: "uppercase" }}>Closed</span>
                 </Title>
                 <Flex justify="center" gap="large" style={{ paddingTop: "48px" }}>
                     {!!isDataStale ? (
