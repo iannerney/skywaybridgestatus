@@ -23,7 +23,7 @@ const PrimaryStatus = (props: IPrimaryStatusProps) => {
     });
     const [currentDateTime, setCurrentDateTime] = useState(new Date());
     const [isDataStale, setIsDataStale] = useState(false);
-    
+
     // update currentDateTime and isDataStale every second
     useEffect(() => {
         const interval = setInterval(() => {
@@ -69,10 +69,16 @@ const PrimaryStatus = (props: IPrimaryStatusProps) => {
                     We update our main status every 5 minutes from{" "}
                     <Link target="_blank" href="https://fl511.com/List/Alerts" rel="nofollow">
                         FL511
-                    </Link> and{" "} 
-                    <Link target="_blank" href="https://www.flhsmv.gov/fhp/traffic/live_traffic_feed.html" rel="nofollow">
+                    </Link>{" "}
+                    and{" "}
+                    <Link
+                        target="_blank"
+                        href="https://www.flhsmv.gov/fhp/traffic/live_traffic_feed.html"
+                        rel="nofollow"
+                    >
                         FHP
                     </Link>
+                    .
                 </Text>
 
                 <Text style={{ fontSize: "0.75rem" }}>(Status last updated: {formattedDateTime})</Text>
