@@ -1,6 +1,6 @@
-import React from "react";
+"use client";
+import React, { useEffect } from "react";
 import Container from "../Container/Container";
-import Script from "next/script";
 
 interface GoogleAdUnitProps {
     adName: string;
@@ -11,13 +11,19 @@ interface GoogleAdUnitProps {
 }
 
 const GoogleAdUnit: React.FC<GoogleAdUnitProps> = ({ adName, adClient, adSlot, adFormat, isResponsive }) => {
+    useEffect(() => {
+        let adsbygoogle: any;
+        try {
+            if (adsbygoogle && !adsbygoogle.loaded) {
+                (adsbygoogle = (window as any).adsbygoogle || []).push({});
+            }
+        } catch (err) {
+            console.log(err);
+        }
+    }, []);
+
     return (
         <Container id={adName}>
-            <Script
-                async
-                src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${adClient}`}
-                crossOrigin="anonymous"
-            ></Script>
             <ins
                 className="adsbygoogle"
                 style={{ display: "block" }}
@@ -26,7 +32,6 @@ const GoogleAdUnit: React.FC<GoogleAdUnitProps> = ({ adName, adClient, adSlot, a
                 data-ad-format={adFormat}
                 data-full-width-responsive={isResponsive.toString()}
             ></ins>
-            <Script id={`${adClient}-script`}>(adsbygoogle = window.adsbygoogle || []).push({});</Script>
         </Container>
     );
 };

@@ -38,13 +38,11 @@ onAuthStateChanged(auth, (user) => {
 const RootLayout = async ({ children }: { children: React.ReactNode }) => {
     return (
         <html lang="en">
-            {process.env.GOOGLE_ADS === "1" && (
-                <Script
-                    async
-                    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8789676310669251"
-                    crossOrigin="anonymous"
-                />
-            )}
+            <Script
+                async
+                src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8789676310669251"
+                crossOrigin="anonymous"
+            />
             <body>{children}</body>
             <GoogleTagManager gtmId={settings.googleTagManagerId} />
         </html>
