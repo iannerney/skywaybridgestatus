@@ -1,6 +1,7 @@
 import Container from "./Container/Container";
 import DisplayAd from "./DisplayAd/DisplayAd";
 import Footer from "./Footer/Footer";
+import GoogleAdUnit from "./GoogleAdUnit/GoogleAdUnit";
 import Header from "./Header/Header";
 import PrimaryStatus from "./PrimaryStatus/PrimaryStatus";
 import ProjectInformation from "./ProjectInformation/ProjectInformation";
@@ -13,6 +14,7 @@ export {
     Container,
     DisplayAd,
     Footer,
+    GoogleAdUnit,
     Header,
     PrimaryStatus,
     ProjectInformation,

@@ -7,6 +7,7 @@ import {
     DisplayAd,
     Weather,
     TrafficCameras,
+    GoogleAdUnit,
 } from "@/components/Blocks";
 import { branding } from "site.config";
 import { Alert } from "antd";
@@ -34,37 +35,40 @@ const verifyPrimaryStatus = async (data: IStatusSummary) => {
     // If the primary status is not "closed" then we need to check the active statements for a closure
     // Reference https://github.com/iannerney/skywaybridgestatus/issues/1
     if (data.primary_status.message !== "closed") {
-        const activeClosures = data.active_statements.filter((statement) => statement.message.toLowerCase().includes("closed"));
+        const activeClosures = data.active_statements.filter((statement) =>
+            statement.message.toLowerCase().includes("closed")
+        );
         if (activeClosures.length > 0) {
-            const primaryStatusOverride = {message: "closed", modifier:"closed", color:"red", datetime:activeClosures[0].last_fetched};
+            const primaryStatusOverride = {
+                message: "closed",
+                modifier: "closed",
+                color: "red",
+                datetime: activeClosures[0].last_fetched,
+            };
             return primaryStatusOverride;
         } else {
             return null;
         }
     }
-}
+};
 
 const Home = async () => {
     const data = await getData();
-    const primaryStatusOverride = await verifyPrimaryStatus(data)
+    const primaryStatusOverride = await verifyPrimaryStatus(data);
     const { primary_status, active_statements, planned_closures } = data;
     const alertBanner = null; // TODO: Add this to the CMS or API
     return (
         <>
             {alertBanner && <Alert message={alertBanner} banner />}
             <PageLayout>
-                <PrimaryStatus
-                    primaryStatus={primary_status}
-                    primaryStatusOverride={primaryStatusOverride}
-                />
+                <PrimaryStatus primaryStatus={primary_status} primaryStatusOverride={primaryStatusOverride} />
                 <StatusDetails activeStatements={active_statements} plannedClosures={planned_closures} />
-                <DisplayAd
-                    desktopImage="/ads/placeholder-1088x300.png"
-                    tabletImage="/ads/placeholder-768x400.png"
-                    mobileImage="/ads/placeholder-580x400.png"
-                    adUrl="mailto:ian@skywaybridgestatus.com"
-                    adAltText="To advertise here contact ian@skywaybridgestatus.com"
-                    adId="ad1-placement1"
+                <GoogleAdUnit
+                    adName="sbs__horizontal-ad--1"
+                    adClient="ca-pub-8789676310669251"
+                    adSlot="9287289192"
+                    adFormat="auto"
+                    isResponsive={true}
                 />
                 <Weather />
                 <DisplayAd
