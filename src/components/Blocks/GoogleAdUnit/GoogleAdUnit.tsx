@@ -12,13 +12,13 @@ interface GoogleAdUnitProps {
 
 const GoogleAdUnit: React.FC<GoogleAdUnitProps> = ({ adName, adClient, adSlot, adFormat, isResponsive }) => {
     useEffect(() => {
-        let adsbygoogle: any;
         try {
-            if (adsbygoogle && !adsbygoogle.loaded) {
-                (adsbygoogle = (window as any).adsbygoogle || []).push({});
+            if (window.hasOwnProperty("adsbygoogle")) {
+                // @ts-ignore
+                (adsbygoogle = window.adsbygoogle || []).push({});
             }
-        } catch (err) {
-            console.log(err);
+        } catch (e) {
+            console.error("Could not initialize adsense ad block", e);
         }
     }, []);
 
