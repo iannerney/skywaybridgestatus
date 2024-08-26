@@ -2,6 +2,8 @@
 import React from "react";
 import { Container } from "..";
 import { sendGAEvent } from "@next/third-parties/google";
+import { Typography } from "antd";
+const { Text } = Typography;
 
 interface DisplayAdProps {
     adUrl: string;
@@ -16,6 +18,9 @@ const DisplayAd: React.FC<DisplayAdProps> = ({ adId, adUrl, desktopImage, tablet
     return (
         <section id={adId} className="ad-unit">
             <Container>
+                <div style={{ textAlign: "center", paddingBottom: "12px" }}>
+                    <Text style={{ textTransform: "uppercase", letterSpacing: "2px" }}>Advertisement</Text>
+                </div>
                 <a
                     href={adUrl}
                     target="_blank"
