@@ -71,13 +71,12 @@ const Home = async () => {
                     isResponsive={true}
                 />
                 <Weather />
-                <DisplayAd
-                    desktopImage="/ads/placeholder-1088x300.png"
-                    tabletImage="/ads/placeholder-768x400.png"
-                    mobileImage="/ads/placeholder-580x400.png"
-                    adUrl="mailto:ian@skywaybridgestatus.com"
-                    adAltText="To advertise here contact ian@skywaybridgestatus.com"
-                    adId="ad1-placement2"
+                <GoogleAdUnit
+                    adName="sbs__horizontal-ad--2"
+                    adClient="ca-pub-8789676310669251"
+                    adSlot="3678112559"
+                    adFormat="auto"
+                    isResponsive={true}
                 />
                 <TrafficCameras />
                 <SupportSection />
