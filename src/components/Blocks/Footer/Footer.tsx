@@ -11,7 +11,7 @@ const Footer = () => {
             <Container style={{ textAlign: "center" }}>
                 <Paragraph>
                     SkywayBridgeStatus.com &copy; 2017-{date.getFullYear()}{" "}
-                    <Link href="https://www.iannerney.com" target="_blank">
+                    <Link href="https://www.iannerney.com" target="_blank" rel="nofollow noopener">
                         Ian Nerney
                     </Link>
                 </Paragraph>
@@ -21,6 +21,17 @@ const Footer = () => {
                         terms of use
                     </Link>
                     .
+                </Paragraph>
+                <Paragraph style={{ fontSize: "0.75rem" }}>
+                    Check{" "}
+                    <Link
+                        href="https://stats.uptimerobot.com/lj0aVtLIgV?rid=3c9a8156af77ca"
+                        target="_blank"
+                        rel="nofollow noopener"
+                    >
+                        UptimeRobot
+                    </Link>{" "}
+                    for our current service status.
                 </Paragraph>
             </Container>
         </footer>

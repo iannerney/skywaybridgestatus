@@ -63,6 +63,13 @@ const Home = async () => {
             <PageLayout>
                 <PrimaryStatus primaryStatus={primary_status} primaryStatusOverride={primaryStatusOverride} />
                 <StatusDetails activeStatements={active_statements} plannedClosures={planned_closures} />
+                <section>
+                    <Alert
+                        message="🌀 Hurricane Helene Forecast"
+                        type="info"
+                        description="Based on the current wind forecast, I suspect the bridge will close sometime around noon on Thursday, and then re-open again Friday morning. The bridge is known to close when sustained winds exceed 40mph. Please check back here for the current bridge status and stay safe! -Ian"
+                    />
+                </section>
                 <GoogleAdUnit
                     adName="sbs__horizontal-ad--1"
                     adClient="ca-pub-8789676310669251"
