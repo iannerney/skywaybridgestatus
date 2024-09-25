@@ -67,7 +67,7 @@ const Home = async () => {
                     <Alert
                         message="🌀 Hurricane Helene Forecast"
                         type="info"
-                        description="Based on the current wind forecast, I suspect the bridge will close sometime around noon on Thursday, and then re-open again Friday morning. The bridge is known to close when sustained winds exceed 40mph. Please check back here for the current bridge status and stay safe! -Ian"
+                        description="Based on the current wind forecast, I suspect the bridge may close sometime after noon on Thursday, and then re-open again early Friday morning. The bridge is known to close when sustained winds exceed 40mph. Please check back here for the current bridge status and stay safe! -Ian"
                     />
                 </section>
                 <GoogleAdUnit
