@@ -24,8 +24,14 @@ const Footer = () => {
                 </Paragraph>
                 <Paragraph style={{ fontSize: "0.75rem" }}>
                     Notice an issue? Report it on our{" "}
-                    <Link href="https://github.com/iannerney/skywaybridgestatus/issues">GitHub page</Link>. You can also
-                    check{" "}
+                    <Link
+                        href="https://github.com/iannerney/skywaybridgestatus/issues"
+                        target="_blank"
+                        rel="nofollow noopener"
+                    >
+                        GitHub page
+                    </Link>
+                    . You can also check{" "}
                     <Link
                         href="https://stats.uptimerobot.com/lj0aVtLIgV?rid=3c9a8156af77ca"
                         target="_blank"
