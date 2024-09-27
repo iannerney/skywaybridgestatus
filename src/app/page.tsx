@@ -54,14 +54,16 @@ const verifyPrimaryStatus = async (data: IStatusSummary) => {
 
 const Home = async () => {
     const data = await getData();
-    const primaryStatusOverride = await verifyPrimaryStatus(data);
+    // TEMPORARY FIX - TODO: FIX THIS
+    // const primaryStatusOverride = await verifyPrimaryStatus(data);
     const { primary_status, active_statements, planned_closures } = data;
     const alertBanner = null; // TODO: Add this to the CMS or API
+
     return (
         <>
             {alertBanner && <Alert message={alertBanner} banner />}
             <PageLayout>
-                <PrimaryStatus primaryStatus={primary_status} primaryStatusOverride={primaryStatusOverride} />
+                <PrimaryStatus primaryStatus={primary_status} primaryStatusOverride={data.primary_status} />
                 <StatusDetails activeStatements={active_statements} plannedClosures={planned_closures} />
                 <section>
                     <Alert
