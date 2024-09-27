@@ -65,13 +65,14 @@ const Home = async () => {
             <PageLayout>
                 <PrimaryStatus primaryStatus={primary_status} primaryStatusOverride={data.primary_status} />
                 <StatusDetails activeStatements={active_statements} plannedClosures={planned_closures} />
-                <section>
+                {/* TODO: Make a forecast component that reads from the DB */}
+                {/* <section>
                     <Alert
                         message="🌀 Hurricane Helene Forecast"
                         type="info"
                         description="Based on the current wind forecast, I suspect the bridge may close sometime after noon on Thursday, and then re-open again early Friday morning. The bridge is known to close when sustained winds exceed 40mph. Please check back here for the current bridge status and stay safe! -Ian"
                     />
-                </section>
+                </section> */}
                 <GoogleAdUnit
                     adName="sbs__horizontal-ad--1"
                     adClient="ca-pub-8789676310669251"
