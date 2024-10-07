@@ -68,8 +68,8 @@ const Home = async () => {
                 {/* TODO: Make a forecast component that reads from the DB */}
                 <Forecast
                     title="🌀 Hurricane Milton Forecast"
-                    description="Based on the current wind forecast, I suspect the bridge may close sometime around noon on Wedensday, and then open again mid-day Thursday (assuming no damage or cleanup is required). The bridge is known to close when sustained winds exceed 40mph, then re-open when FHP determines the bridge is safe. Please check back here for the current bridge status and stay safe! -Ian"
-                    updated="Monday, October 7 at 10:30am"
+                    description="Based on the current wind forecast, I suspect the bridge may close sometime around noon on Wedensday, and then open again Thursday afternoon (assuming no damage or cleanup is required). The bridge is known to close when sustained winds exceed 40mph, then re-open when FHP determines the bridge is safe to use. Please check back here for the current bridge status and stay safe! -Ian"
+                    updated="Monday, October 7 at 3:50pm"
                 />
                 <GoogleAdUnit
                     adName="sbs__horizontal-ad--1"
