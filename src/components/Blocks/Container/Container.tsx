@@ -13,7 +13,7 @@ const Container = ({
         <div
             id={id || undefined}
             className="content-container"
-            style={{ margin: "0 auto", padding: "0 24px 24px 24px", maxWidth: "1140px", ...style }}
+            style={{ margin: "0 auto", padding: "0 24px 12px 24px", maxWidth: "1140px", ...style }}
         >
             {children}
         </div>
