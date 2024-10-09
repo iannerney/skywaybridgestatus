@@ -10,6 +10,7 @@ import {
     Forecast,
 } from "@/components/Blocks";
 import { branding } from "site.config";
+import { statuses } from "@/consts/statuses";
 import { Alert } from "antd";
 import type { Metadata } from "next";
 import type { IStatusSummary } from "@/types/StatusTypes";
@@ -32,20 +33,42 @@ async function getData() {
 }
 
 const verifyPrimaryStatus = async (data: IStatusSummary) => {
-    // If the primary status is not "closed" then we need to check the active statements for a closure
-    // Reference https://github.com/iannerney/skywaybridgestatus/issues/1
+    // If the primary status is not "closed" then we need to check the primary status against the FHP active statements
     if (data.primary_status.message !== "closed") {
-        const activeClosures = data.active_statements.filter((statement) =>
-            statement.message.toLowerCase().includes("closed")
+        const statementsWithOpen = data.active_statements.filter(
+            (statement) =>
+                statement.message.toLowerCase().includes("bridge open") ||
+                statement.message.toLowerCase().includes("bridge is open") ||
+                statement.message.toLowerCase().includes("bridge reopened") ||
+                statement.message.toLowerCase().includes("bridge re-opened")
         );
-        if (activeClosures.length > 0) {
-            const primaryStatusOverride = {
-                message: "closed",
-                modifier: "closed",
-                color: "red",
-                datetime: activeClosures[0].last_fetched,
+
+        const statementsWithClosed = data.active_statements.filter(
+            (statement) =>
+                statement.message.toLowerCase().includes("bridge closed") ||
+                statement.message.toLowerCase().includes("bridge is closed")
+        );
+
+        if (statementsWithOpen.length > 0 && statementsWithClosed.length < 0) {
+            // If both open and closed statements are found, override with mixed status
+            return {
+                ...statuses.mixed,
+                datetime: statementsWithOpen[0].last_fetched,
             };
-            return primaryStatusOverride;
+        } else if (statementsWithClosed.length > 0) {
+            // If explicit "closed" statement is found, override with closed status
+            // https://github.com/iannerney/skywaybridgestatus/issues/1
+            return {
+                ...statuses.closed,
+                datetime: statementsWithClosed[0].last_fetched,
+            };
+        } else if (statementsWithOpen.length > 0) {
+            // If explicit "open" or "reopened" statement is found, override with open status
+            //https://github.com/iannerney/skywaybridgestatus/issues/3
+            return {
+                ...statuses.open,
+                datetime: statementsWithOpen[0].last_fetched,
+            };
         } else {
             return null;
         }
@@ -54,8 +77,7 @@ const verifyPrimaryStatus = async (data: IStatusSummary) => {
 
 const Home = async () => {
     const data = await getData();
-    // TEMPORARY FIX - TODO: FIX THIS
-    // const primaryStatusOverride = await verifyPrimaryStatus(data);
+    const primaryStatusOverride = await verifyPrimaryStatus(data);
     const { primary_status, active_statements, planned_closures } = data;
     const alertBanner = null; // TODO: Add this to the CMS or API
 
@@ -63,13 +85,13 @@ const Home = async () => {
         <>
             {alertBanner && <Alert message={alertBanner} banner />}
             <PageLayout>
-                <PrimaryStatus primaryStatus={primary_status} primaryStatusOverride={data.primary_status} />
+                <PrimaryStatus primaryStatus={primary_status} primaryStatusOverride={primaryStatusOverride} />
                 <StatusDetails activeStatements={active_statements} plannedClosures={planned_closures} />
                 {/* TODO: Make a forecast component that reads from the DB */}
                 <Forecast
                     title="🌀 Hurricane Milton Forecast"
-                    description="Based on the current wind forecast, I suspect the bridge may close sometime around noon on Wedensday, and then open again Thursday afternoon (assuming no damage or cleanup is required). The bridge is known to close when sustained winds exceed 40mph, then re-open when FHP determines the bridge is safe to use. Please check back here for the current bridge status and stay safe! -Ian"
-                    updated="Monday, October 7 at 3:50pm"
+                    description="Based on the current wind forecast, I suspect the bridge may close sometime around 5pm on Wedensday, and then re-open again Thursday evening. The bridge is known to close when sustained winds exceed 40mph, then re-open when FHP determines the bridge is safe to use. Please check back here for the current bridge status and please stay safe! -Ian"
+                    updated="Wednesday, October 9 at 7:45am"
                 />
                 <GoogleAdUnit
                     adName="sbs__horizontal-ad--1"
