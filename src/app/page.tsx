@@ -88,11 +88,11 @@ const Home = async () => {
                 <PrimaryStatus primaryStatus={primary_status} primaryStatusOverride={primaryStatusOverride} />
                 <StatusDetails activeStatements={active_statements} plannedClosures={planned_closures} />
                 {/* TODO: Make a forecast component that reads from the DB */}
-                <Forecast
+                {/* <Forecast
                     title="🌀 Hurricane Milton Forecast"
                     description="Based on the current wind forecast, I suspect the bridge may close sometime around 5pm on Wedensday, and then re-open again Thursday evening. The bridge is known to close when sustained winds exceed 40mph, then re-open when FHP determines the bridge is safe to use. Please check back here for the current bridge status and please stay safe! -Ian"
                     updated="Wednesday, October 9 at 7:45am"
-                />
+                /> */}
                 <GoogleAdUnit
                     adName="sbs__horizontal-ad--1"
                     adClient="ca-pub-8789676310669251"
