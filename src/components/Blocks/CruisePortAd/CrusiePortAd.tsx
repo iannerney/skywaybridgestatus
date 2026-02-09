@@ -16,13 +16,7 @@ const CruisePortAd: React.FC = () => {
                 target="_blank"
                 rel="noopener noreferrer"
             >
-                <Image
-                    src="/ads/skyway-port.jpg"
-                    alt="Stop the Skyway Cruise Port"
-                    width={1092}
-                    height={1092}
-                    style={{ width: "100%", height: "auto" }}
-                />
+                <img src="/ads/skyway-port.jpg" alt="Stop the Skyway Cruise Port" style={{ width: "100%" }} />
             </a>
         </Container>
     );
