@@ -8,6 +8,7 @@ import {
     TrafficCameras,
     GoogleAdUnit,
     Forecast,
+    CruisePortAd,
 } from "@/components/Blocks";
 import { branding } from "site.config";
 import { statuses } from "@/consts/statuses";
@@ -40,13 +41,13 @@ const verifyPrimaryStatus = async (data: IStatusSummary) => {
                 statement.message.toLowerCase().includes("bridge open") ||
                 statement.message.toLowerCase().includes("bridge is open") ||
                 statement.message.toLowerCase().includes("bridge reopened") ||
-                statement.message.toLowerCase().includes("bridge re-opened")
+                statement.message.toLowerCase().includes("bridge re-opened"),
         );
 
         const statementsWithClosed = data.active_statements.filter(
             (statement) =>
                 statement.message.toLowerCase().includes("bridge closed") ||
-                statement.message.toLowerCase().includes("bridge is closed")
+                statement.message.toLowerCase().includes("bridge is closed"),
         );
 
         if (statementsWithOpen.length > 0 && statementsWithClosed.length < 0) {
@@ -93,13 +94,14 @@ const Home = async () => {
                     description="Based on the current wind forecast, I suspect the bridge may close sometime around 5pm on Wedensday, and then re-open again Thursday evening. The bridge is known to close when sustained winds exceed 40mph, then re-open when FHP determines the bridge is safe to use. Please check back here for the current bridge status and please stay safe! -Ian"
                     updated="Wednesday, October 9 at 7:45am"
                 /> */}
-                <GoogleAdUnit
+                {/* <GoogleAdUnit
                     adName="sbs__horizontal-ad--1"
                     adClient="ca-pub-8789676310669251"
                     adSlot="9287289192"
                     adFormat="auto"
                     isResponsive={true}
-                />
+                /> */}
+                <CruisePortAd />
                 <Weather />
                 <GoogleAdUnit
                     adName="sbs__horizontal-ad--2"
@@ -108,7 +110,6 @@ const Home = async () => {
                     adFormat="auto"
                     isResponsive={true}
                 />
-                <TrafficCameras />
                 <SupportSection />
                 <ProjectInformation />
             </PageLayout>

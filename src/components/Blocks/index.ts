@@ -1,4 +1,5 @@
 import Container from "./Container/Container";
+import CruisePortAd from "./CruisePortAd/CrusiePortAd";
 import DisplayAd from "./DisplayAd/DisplayAd";
 import Footer from "./Footer/Footer";
 import Forecast from "./Forecast/Forecast";
@@ -13,6 +14,7 @@ import Weather from "./Weather/Weather";
 
 export {
     Container,
+    CruisePortAd,
     DisplayAd,
     Footer,
     Forecast,
